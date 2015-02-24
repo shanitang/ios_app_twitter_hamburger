@@ -17,9 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbY-GB-lT8">
-                                <rect key="frame" x="61" y="156" width="199" height="43"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="box" translatesAutoresizingMaskIntoConstraints="NO" id="eJ2-Yf-M15">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="454"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbY-GB-lT8">
+                                <rect key="frame" x="0.0" y="454" width="320" height="114"/>
+                                <color key="backgroundColor" red="0.14509804549999999" green="0.64313727620000005" blue="0.68235296010000002" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Login with Twitter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -28,6 +34,16 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="NbY-GB-lT8" secondAttribute="trailing" constant="-16" id="HQE-FG-gyc"/>
+                            <constraint firstItem="eJ2-Yf-M15" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="I0C-YP-dmN"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="NbY-GB-lT8" secondAttribute="bottom" id="Oh8-Yc-MZa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eJ2-Yf-M15" secondAttribute="trailing" constant="-16" id="ouS-sT-rqV"/>
+                            <constraint firstItem="NbY-GB-lT8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="oxD-L4-ywi"/>
+                            <constraint firstItem="eJ2-Yf-M15" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="pyN-Ce-Den"/>
+                            <constraint firstItem="NbY-GB-lT8" firstAttribute="top" secondItem="eJ2-Yf-M15" secondAttribute="bottom" id="vaL-rx-umb"/>
+                            <constraint firstAttribute="centerX" secondItem="NbY-GB-lT8" secondAttribute="centerX" id="vu1-N7-uKo"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="gRG-DK-C7I" kind="modal" identifier="loginSegue" id="mhD-Zx-gpy"/>
@@ -84,9 +100,6 @@
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="onReply:" destination="jjC-RE-bku" eventType="touchUpInside" id="Va7-lG-YoJ"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aac-K1-Q0Y">
                                                     <rect key="frame" x="141" y="58" width="16" height="16"/>
@@ -429,13 +442,16 @@
             <point key="canvasLocation" x="1465" y="-364"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="box" width="900" height="600"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dwG-NH-gyd"/>
+        <segue reference="mhD-Zx-gpy"/>
         <segue reference="wpK-Xo-x7w"/>
     </inferredMetricsTieBreakers>
 </document>

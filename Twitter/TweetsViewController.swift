@@ -83,9 +83,15 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         if tweet != nil {
             cell.initData(tweet!)
+            cell.replyButton.addTarget(self, action: "replyAction", forControlEvents: .TouchUpInside)
         }
         
         return cell
+    }
+    
+    func replyAction(){
+        self.performSegueWithIdentifier("PostView", sender: self)
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

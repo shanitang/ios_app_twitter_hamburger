@@ -50,10 +50,6 @@ class TweetCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func onReply(sender: UIButton) {
-        
-        
-    }
     
     @IBAction func onRetweet(sender: UIButton) {
         tweet.retweetWithCompletion(nil, completion: { (result, error) -> Void in
