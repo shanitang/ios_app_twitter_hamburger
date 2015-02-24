@@ -12,7 +12,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     var tweets = [Tweet]?()
 
-   
+    var refreshControl: UIRefreshControl!
+    
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -20,6 +21,12 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        //page refresh controller
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+
         
         TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
             self.tweets = tweets
@@ -34,6 +41,14 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func onRefresh() {
+        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+            self.tweets = tweets
+            self.tableView.reloadData()
+        })
+        refreshControl.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,13 +81,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         var cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetCell
         var tweet = self.tweets?[indexPath.row]
         
-        cell.username.text = tweet?.user?.name
-        cell.content.text = tweet?.text
-        var url = tweet?.user?.profileImageUrl
-        if(url != nil){
-            cell.picture.setImageWithURL(NSURL(string: url!) )
+        if tweet != nil {
+            cell.initData(tweet!)
         }
-        cell.time.text = tweet?.time
         
         return cell
     }
@@ -100,7 +111,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             vc.user = User.currentUser?
         }
         
-        if segue.identifier == "TweetView"{
+        else if segue.identifier == "TweetView"{
             
             var vc = segue.destinationViewController as TweetViewController
             let indexPath = tableView.indexPathForCell(sender as TweetCell)!
@@ -108,17 +119,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             vc.tweet = tweet
             
         }
+        
+
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     
-    @IBAction func onReply(sender: UIButton) {
-    }
-
-    @IBAction func onRetweet(sender: UIButton) {
-    }
-    
-    @IBAction func onFavorite(sender: UIButton) {
-    }
-
 }

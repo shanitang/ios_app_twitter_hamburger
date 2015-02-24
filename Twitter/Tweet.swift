@@ -53,7 +53,10 @@ class Tweet: NSObject {
     }
     
     func retweetWithCompletion(params: NSDictionary?, completion: (result: AnyObject?, error: NSError?) -> Void) {
-        TwitterClient.sharedInstance.POST("1.1/statuses/retweet/\(self.id).json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        
+        var id = Int()
+        id = self.id!
+        TwitterClient.sharedInstance.POST("1.1/statuses/retweet/\(id).json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             completion(result: response, error: nil)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 completion(result: nil, error: error)
