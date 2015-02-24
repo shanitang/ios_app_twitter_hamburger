@@ -28,7 +28,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         })
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 150
         
         self.navigationItem.title = "Home"
         
@@ -72,8 +72,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         if(url != nil){
             cell.picture.setImageWithURL(NSURL(string: url!) )
         }
+        cell.time.text = tweet?.time
         
-        cell.time.text = tweet?.createAt?.description
         return cell
     }
     
@@ -94,12 +94,15 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "PostView"{
-            var vc = segue.destinationViewController as PostViewController
+            
+            var navController = segue.destinationViewController as UINavigationController
+            var vc = navController.viewControllers[0] as PostViewController
             vc.user = User.currentUser?
         }
         
         if segue.identifier == "TweetView"{
-             var vc = segue.destinationViewController as TweetViewController
+            
+            var vc = segue.destinationViewController as TweetViewController
             let indexPath = tableView.indexPathForCell(sender as TweetCell)!
             let tweet = self.tweets?[indexPath.row]
             vc.tweet = tweet
@@ -109,5 +112,13 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Pass the selected object to the new view controller.
     }
     
+    @IBAction func onReply(sender: UIButton) {
+    }
+
+    @IBAction func onRetweet(sender: UIButton) {
+    }
+    
+    @IBAction func onFavorite(sender: UIButton) {
+    }
 
 }

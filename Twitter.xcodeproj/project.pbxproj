@@ -19,9 +19,6 @@
 		9C3A077A1A9AC40600D1952F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A07791A9AC40600D1952F /* User.swift */; };
 		9CE8EFF21A9AD52A00F07121 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8EFF11A9AD52A00F07121 /* TweetsViewController.swift */; };
 		9CE8EFF81A9AE4A600F07121 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8EFF71A9AE4A600F07121 /* TweetCell.swift */; };
-		9CEA64231A9AF43E004931DD /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEA64201A9AF43E004931DD /* favorite.png */; };
-		9CEA64241A9AF43E004931DD /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEA64211A9AF43E004931DD /* reply.png */; };
-		9CEA64251A9AF43E004931DD /* retweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEA64221A9AF43E004931DD /* retweet.png */; };
 		9CEA64271A9B0780004931DD /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA64261A9B0780004931DD /* PostViewController.swift */; };
 		9CEA64291A9B218C004931DD /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA64281A9B218C004931DD /* TweetViewController.swift */; };
 /* End PBXBuildFile section */
@@ -56,9 +53,6 @@
 		9C3A07791A9AC40600D1952F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9CE8EFF11A9AD52A00F07121 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		9CE8EFF71A9AE4A600F07121 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
-		9CEA64201A9AF43E004931DD /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favorite.png; path = Images.xcassets/favorite.png; sourceTree = "<group>"; };
-		9CEA64211A9AF43E004931DD /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reply.png; path = Images.xcassets/reply.png; sourceTree = "<group>"; };
-		9CEA64221A9AF43E004931DD /* retweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retweet.png; path = Images.xcassets/retweet.png; sourceTree = "<group>"; };
 		9CEA64261A9B0780004931DD /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		9CEA64281A9B218C004931DD /* TweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,9 +119,6 @@
 				9CEA64281A9B218C004931DD /* TweetViewController.swift */,
 				9CEA64261A9B0780004931DD /* PostViewController.swift */,
 				9C3A07551A9AAE2600D1952F /* Images.xcassets */,
-				9CEA64201A9AF43E004931DD /* favorite.png */,
-				9CEA64211A9AF43E004931DD /* reply.png */,
-				9CEA64221A9AF43E004931DD /* retweet.png */,
 				9C3A07571A9AAE2600D1952F /* LaunchScreen.xib */,
 				9C3A074C1A9AAE2500D1952F /* Supporting Files */,
 			);
@@ -268,11 +259,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C3A07541A9AAE2500D1952F /* Main.storyboard in Resources */,
-				9CEA64241A9AF43E004931DD /* reply.png in Resources */,
 				9C3A07591A9AAE2600D1952F /* LaunchScreen.xib in Resources */,
 				9C3A07561A9AAE2600D1952F /* Images.xcassets in Resources */,
-				9CEA64251A9AF43E004931DD /* retweet.png in Resources */,
-				9CEA64231A9AF43E004931DD /* favorite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -82,14 +82,5 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 completion(result: nil, error: error)
         })
     }
-    
-    func retweetWithCompletion(id: String, params: NSDictionary?, completion: (result: AnyObject?, error: NSError?) -> Void) {
-        POST("1.1/statuses/retweet/\(id).json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            completion(result: response, error: nil)
-            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                completion(result: nil, error: error)
-        })
-    }
-
    
 }

@@ -24,6 +24,7 @@ class TweetViewController: UIViewController {
         
         
         self.screenName.text = self.tweet?.user?.screenName
+        self.screenName.text = "@" + self.screenName.text!
         self.name.text = self.tweet?.user?.name
         var url = self.tweet?.user?.profileImageUrl
         
@@ -41,14 +42,19 @@ class TweetViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        var navController = segue.destinationViewController as UINavigationController
+        var vc = navController.viewControllers[0] as PostViewController
+        vc.user = User.currentUser?
+        vc.tweet = tweet
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

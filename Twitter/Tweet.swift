@@ -13,7 +13,8 @@ class Tweet: NSObject {
     var text: String?
     var createAtString: String? 
     var createAt: NSDate?
-    var id: String?
+    var time: String?
+    var id: Int?
     
     init(dictionary: NSDictionary){
         user = User(dictionary: dictionary["user"] as NSDictionary)
@@ -24,7 +25,10 @@ class Tweet: NSObject {
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
         createAt = formatter.dateFromString(createAtString!)
         
-        id = dictionary["id"] as? String
+        formatter.dateFormat = "HH:mm"
+        time = formatter.stringFromDate(createAt!)
+      
+        id = dictionary["id"] as? Int
     }
     
     class func tweetsWithArray(array: [NSDictionary])-> [Tweet]{
@@ -35,6 +39,27 @@ class Tweet: NSObject {
         }
         return tweets
     }
+    
+    func favorite(completion: (result: AnyObject?, error: NSError?) -> Void) {
+        var params =  NSMutableDictionary()
+        params["id"] = self.id
+
+        TwitterClient.sharedInstance.POST("1.1/favorites/create.json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            completion(result: response, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                completion(result: nil, error: error)
+        })
+        
+    }
+    
+    func retweetWithCompletion(params: NSDictionary?, completion: (result: AnyObject?, error: NSError?) -> Void) {
+        TwitterClient.sharedInstance.POST("1.1/statuses/retweet/\(self.id).json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            completion(result: response, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                completion(result: nil, error: error)
+        })
+    }
+
     
     
 }
