@@ -62,7 +62,5 @@ class Tweet: NSObject {
                 completion(result: nil, error: error)
         })
     }
-
-    
     
 }

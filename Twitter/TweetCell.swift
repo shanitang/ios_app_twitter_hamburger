@@ -8,13 +8,17 @@
 
 import UIKit
 
-class TweetCell: UITableViewCell {
 
+class TweetCell: UITableViewCell {
+    
     @IBOutlet var time: UILabel!
     @IBOutlet var content: UILabel!
     @IBOutlet var username: UILabel!
     @IBOutlet var picture: UIImageView!
+    @IBOutlet var screenName: UILabel!
     
+
+    @IBOutlet var imageButton: UIButton!
     @IBOutlet var replyButton: UIButton!
     @IBOutlet var retweetButton: UIButton!
     @IBOutlet var favoriteButton: UIButton!
@@ -25,9 +29,11 @@ class TweetCell: UITableViewCell {
         
          super.awakeFromNib()
         
+        if replyButton != nil{
         replyButton.setBackgroundImage(UIImage(named: "reply"), forState: UIControlState.Normal)
         retweetButton.setBackgroundImage(UIImage(named: "retweet"), forState: UIControlState.Normal)
         favoriteButton.setBackgroundImage(UIImage(named: "favorite"), forState: UIControlState.Normal)
+        }
        
         // Initialization code
     }
@@ -38,9 +44,16 @@ class TweetCell: UITableViewCell {
         content.text = tweet.text
         var url = tweet.user?.profileImageUrl
         if(url != nil){
-            picture.setImageWithURL(NSURL(string: url!) )
+            if picture != nil{
+                picture.setImageWithURL(NSURL(string: url!) )
+            }
+            
         }
         time.text = tweet.time
+        
+        if screenName != nil {
+            screenName.text = tweet.user?.screenName
+        }
         self.tweet = tweet
     }
 
@@ -73,5 +86,5 @@ class TweetCell: UITableViewCell {
         }
         favoriteButton.setBackgroundImage(UIImage(named: "favorite_on"), forState: UIControlState.Normal)
     }
-    
+
 }

@@ -1,5 +1,5 @@
 //
-//  MentionViewController.swift
+//  ProfileViewController.swift
 //  Twitter
 //
 //  Created by Yeu-Shuan Tang on 2/28/15.
@@ -8,32 +8,47 @@
 
 import UIKit
 
-class MentionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UserProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     
     var tweets = [Tweet]?()
-
+    var tweet: Tweet!
+    var params =  NSMutableDictionary()
+    
+    @IBOutlet var photo: UIImageView!
+    
     @IBOutlet var tableView: UITableView!
+    
+    @IBOutlet var Following: UILabel!
+    @IBOutlet var Follower: UILabel!
+    
+    @IBOutlet var myPhoto: UIImageView!
+    @IBOutlet var myName: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
         
+        Follower.text = "\( _currentUser?.follower)"
         
-        TwitterClient.sharedInstance.mentionsTimelineWithParams(nil, completion: { (tweets, error) -> () in
+        Following.text = "\(_currentUser?.following)"
+        //
+        params["id"] = tweet.user?.id
+        
+        TwitterClient.sharedInstance.userTimelineWithParams(params, completion: { (tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
             //            println(self.tweets)
         })
-
+        
+        var url = tweet.user?.profileImageUrl
+        myPhoto.setImageWithURL(NSURL(string: url!) )
+        myName.text = tweet.user?.name
+        
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetCell
@@ -41,6 +56,10 @@ class MentionViewController: UIViewController, UITableViewDataSource, UITableVie
         
         if tweet != nil {
             cell.initData(tweet!)
+            
+        }
+        if cell.replyButton != nil{
+            cell.replyButton.addTarget(self, action: "replyAction", forControlEvents: .TouchUpInside)
         }
         
         return cell
@@ -56,18 +75,21 @@ class MentionViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
     }
-
-
     
-
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
