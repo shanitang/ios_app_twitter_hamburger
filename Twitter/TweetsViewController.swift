@@ -14,7 +14,20 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 
     var refreshControl: UIRefreshControl!
     
+    var trayOriginalCenter: CGPoint!
+    var origianlPoint: CGFloat!
+    var offset: CGFloat!
+    var left: CGFloat!
+    var rightBound: CGFloat!
+    var right: CGFloat!
+    
+    private let profileVC = ProfileViewController()
+    private let mentionVC =  MentionViewController()
+    
+    @IBOutlet var containerView: UIView!
     @IBOutlet var tableView: UITableView!
+    
+    @IBOutlet var burger: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +52,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         self.navigationItem.title = "Home"
         
+        rightBound = containerView.bounds.maxX
+       
+        
+
 
         // Do any additional setup after loading the view.
     }
@@ -105,30 +122,64 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    @IBAction func hamburger(panGestureRecognizer: UIPanGestureRecognizer) {
+        
+        var point = panGestureRecognizer.locationInView(view)
+        var velocity = panGestureRecognizer.velocityInView(view)
+
+        if panGestureRecognizer.state == UIGestureRecognizerState.Began {
+            origianlPoint = point.x
+            trayOriginalCenter = containerView.center
+            right = rightBound * 1.5 - 44
+            left = rightBound / 2
+
+        } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
+            offset = origianlPoint - trayOriginalCenter.x
+            var x = (point.x - offset) > right ? right : (point.x - offset)
+            if x < left{
+                x = left
+            }
+
+            containerView.center = CGPoint(x: x, y: trayOriginalCenter.y)
+            
+        } else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
+            
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                if velocity.x > 0 {
+                    self.containerView.center = CGPoint(x: self.right, y: self.trayOriginalCenter.y)
+                    
+                }
+                else if velocity.x < 0{
+                    self.containerView.center = CGPoint(x: self.left, y: self.trayOriginalCenter.y)
+                }
+
+            })
+            
+        }
+    }
+    
+    @IBAction func onTimeline(sender: UIButton) {
+    }
+    
+    @IBAction func onMentions(sender: UIButton) {
+    }
+    
+    @IBAction func onProfile(sender: UIButton) {
+        self.addChildViewController(profileVC)
+        self.containerView.addSubview(profileVC.view)
+        
+        profileVC.didMoveToParentViewController(self)
+    }
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "PostView"{
-            
-            var navController = segue.destinationViewController as UINavigationController
-            var vc = navController.viewControllers[0] as PostViewController
-            vc.user = User.currentUser?
-        }
-        
-        else if segue.identifier == "TweetView"{
-            
-            var vc = segue.destinationViewController as TweetViewController
-            let indexPath = tableView.indexPathForCell(sender as TweetCell)!
-            let tweet = self.tweets?[indexPath.row]
-            vc.tweet = tweet
-            
-        }
-        
 
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+    */
     
 }

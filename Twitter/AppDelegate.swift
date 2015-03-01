@@ -23,9 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if User.currentUser != nil{
             println("current user dected \(User.currentUser?.name)")
             
-//            var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
+            var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
            
-            let vc = storyboard.instantiateViewControllerWithIdentifier("HomeNav") as UINavigationController
+//            let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UINavigationController
 
              window?.rootViewController = vc
         }
