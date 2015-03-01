@@ -25,7 +25,6 @@ class User: NSObject {
     var following: Int?
     
     init(dictionary: NSDictionary){
-        println(dictionary)
         self.dictionary = dictionary
         
         name = dictionary["name"] as? String

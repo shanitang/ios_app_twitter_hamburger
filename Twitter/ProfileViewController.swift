@@ -31,14 +31,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         tableView.delegate = self
     
-        let f2 = _currentUser?.follower
-        let f = "\(f2)"
-        println(f)
+        let f = _currentUser?.follower
+        let f2 = _currentUser?.following
         
-        Follower.text = "\(f2)"
+        Follower.text = "\(f!)"
+        Following.text = "\(f2!)"
 
-        Following.text = "\(_currentUser?.following)"
-//
         params["id"] = _currentUser?.id
         
         TwitterClient.sharedInstance.userTimelineWithParams(params, completion: { (tweets, error) -> () in
@@ -50,6 +48,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         var url = _currentUser?.profileImageUrl
         myPhoto.setImageWithURL(NSURL(string: url!) )
         myName.text = _currentUser?.name
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
 
             // Do any additional setup after loading the view.
     }

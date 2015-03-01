@@ -87,7 +87,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             cell.initData(tweet!)
             cell.imageButton.addTarget(self, action: "showUserProfile", forControlEvents: .TouchUpInside)
         }
-        
+
         return cell
     }
     
@@ -117,7 +117,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             var navController = segue.destinationViewController as UINavigationController
             var vc = navController.viewControllers[0] as UserProfileViewController
             
-            let indexPath = tableView.indexPathForCell(sender as TweetCell)!
+            var kk = sender as UIButton
+//            println("ddddd")
+            let bb = kk.superview?.superview as TweetCell
+            let indexPath = tableView.indexPathForCell(bb)!
             let tweet = self.tweets?[indexPath.row]
             vc.tweet = tweet
         }

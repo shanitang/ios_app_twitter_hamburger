@@ -31,9 +31,11 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.dataSource = self
         tableView.delegate = self
         
-        Follower.text = "\( _currentUser?.follower)"
+        let f = tweet.user?.follower
+        let f2 = tweet.user?.following
         
-        Following.text = "\(_currentUser?.following)"
+        Follower.text = "\(f!)"
+        Following.text = "\(f2!)"
         //
         params["id"] = tweet.user?.id
         
@@ -46,6 +48,9 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         var url = tweet.user?.profileImageUrl
         myPhoto.setImageWithURL(NSURL(string: url!) )
         myName.text = tweet.user?.name
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
         
         // Do any additional setup after loading the view.
     }

@@ -25,6 +25,9 @@ class MentionViewController: UIViewController, UITableViewDataSource, UITableVie
             self.tableView.reloadData()
             //            println(self.tweets)
         })
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
 
         // Do any additional setup after loading the view.
     }
