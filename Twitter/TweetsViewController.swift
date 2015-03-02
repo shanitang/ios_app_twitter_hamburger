@@ -118,7 +118,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             var vc = navController.viewControllers[0] as UserProfileViewController
             
             var kk = sender as UIButton
-//            println("ddddd")
             let bb = kk.superview?.superview as TweetCell
             let indexPath = tableView.indexPathForCell(bb)!
             let tweet = self.tweets?[indexPath.row]
