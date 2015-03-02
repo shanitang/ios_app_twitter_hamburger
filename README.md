@@ -2,7 +2,7 @@
 
 This is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: `13 hrs`
+Time spent: `16 hrs`
 
 ### Features
 
@@ -19,7 +19,7 @@ Time spent: `13 hrs`
 - [ ] Optional: Pulling down the profile page should blur and resize the header image.
 
 #### Home Timeline
-- [ ] Tapping on a user image should bring up that user's profile page
+- [x] Tapping on a user image should bring up that user's profile page
 
 #### Optional: Account switching
 - [ ] Long press on tab bar to bring up Account view with animation
