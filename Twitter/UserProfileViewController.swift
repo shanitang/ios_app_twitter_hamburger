@@ -49,6 +49,8 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         myPhoto.setImageWithURL(NSURL(string: url!) )
         myName.text = tweet.user?.name
         
+        self.navigationItem.title = "Profile"
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
         
@@ -84,6 +86,9 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func onHome(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
     
     

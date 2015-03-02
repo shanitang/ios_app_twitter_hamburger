@@ -39,7 +39,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
         
-        self.navigationItem.title = "Home"
+//        self.navigationItem.title = "Home"
 
 
         // Do any additional setup after loading the view.
@@ -63,21 +63,21 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         User.currentUser?.logout()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            //            println(self.tweets)
-        })
-        
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
-
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        
+//        tableView.dataSource = self
+//        tableView.delegate = self
+//        
+//        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+//            self.tweets = tweets
+//            self.tableView.reloadData()
+//            //            println(self.tweets)
+//        })
+//        
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 100
+//
+//    }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetCell
@@ -85,7 +85,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         if tweet != nil {
             cell.initData(tweet!)
-            cell.imageButton.addTarget(self, action: "showUserProfile", forControlEvents: .TouchUpInside)
+//            cell.imageButton.addTarget(self, action: "showUserProfile", forControlEvents: .TouchUpInside)
         }
 
         return cell

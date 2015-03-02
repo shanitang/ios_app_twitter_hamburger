@@ -26,8 +26,6 @@ class HomeViewController: UIViewController{
     
     @IBOutlet var burger: UIView!
     
-    var tweets = [Tweet]?()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,16 +43,17 @@ class HomeViewController: UIViewController{
         profileVC = storyboard?.instantiateViewControllerWithIdentifier("ProfileView") as? ProfileViewController
         
         userVC = storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController
-        
 
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
-            self.tweets = tweets
-        })
 
         self.containerView.addSubview(timelineVC.view)
 
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+//        viewDidLoad()
+
     }
     
     
@@ -128,25 +127,16 @@ class HomeViewController: UIViewController{
  
     }
 
-    
+    /*
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
-        if segue.identifier == "userVIew"{
-        var navController = segue.destinationViewController as UINavigationController
-        var vc = navController.viewControllers[0] as UserProfileViewController
-        
-        let indexPath = timelineVC.tableView.indexPathForCell(sender as TweetCell)!
-        let tweet = self.tweets?[indexPath.row]
-        vc.tweet = tweet
-        }
-
-    
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
     }
+    */
     
     
 }

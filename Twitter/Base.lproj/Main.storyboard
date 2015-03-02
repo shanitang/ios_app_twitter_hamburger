@@ -33,6 +33,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onLogin:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="w1t-pw-daK"/>
+                                    <segue destination="Dqk-Km-zcF" kind="modal" identifier="loginSegue" id="ey7-9L-xTg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -122,6 +123,7 @@
                             <outletCollection property="gestureRecognizers" destination="hFe-xR-Lxb" appends="YES" id="Q7c-rQ-JK4"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="Aic-Rt-SqP"/>
                     <connections>
                         <outlet property="burger" destination="ygx-cc-itd" id="4nZ-BX-iA4"/>
                         <outlet property="containerView" destination="i3k-dn-6GK" id="cWL-hb-f2q"/>
@@ -160,6 +162,17 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIx-6w-p4A">
+                                                <rect key="frame" x="266" y="9" width="49" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" title="Logout">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="logout:" destination="8ey-4G-MWZ" eventType="touchUpInside" id="aox-ap-XDE"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.13333334028720856" green="0.69411766529083252" blue="0.96078437566757202" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
@@ -806,8 +819,8 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtS-rU-Rur">
-                                        <rect key="frame" x="129" y="121" width="46" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtS-rU-Rur">
+                                        <rect key="frame" x="102" y="121" width="100" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -841,7 +854,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="G2n-Rp-eFA" secondAttribute="trailing" constant="-8" id="ubg-zl-1ns"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aR2-bX-YkX"/>
+                    <navigationItem key="navigationItem" id="aR2-bX-YkX">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="mJZ-7o-gmq">
+                            <connections>
+                                <action selector="onHome:" destination="jRe-uN-ald" id="0Vi-5s-kr1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="Follower" destination="eif-ky-JAN" id="S5F-5b-PJY"/>
                         <outlet property="Following" destination="x4e-Hl-ewn" id="DbN-6F-Zyk"/>
@@ -882,4 +901,5 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>

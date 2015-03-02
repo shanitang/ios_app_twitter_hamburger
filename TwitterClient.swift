@@ -44,10 +44,11 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
             completion(tweets: tweets, error: nil)
-//            print(response)
+            print(response)
             
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
             completion(tweets: nil, error: error)
+            println(error)
         })
 
     }
