@@ -33,7 +33,6 @@
                                 </state>
                                 <connections>
                                     <action selector="onLogin:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="w1t-pw-daK"/>
-                                    <segue destination="Dqk-Km-zcF" kind="modal" identifier="loginSegue" id="ey7-9L-xTg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -48,6 +47,9 @@
                             <constraint firstItem="NbY-GB-lT8" firstAttribute="top" secondItem="eJ2-Yf-M15" secondAttribute="bottom" constant="-1" id="vaL-rx-umb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="Dqk-Km-zcF" kind="modal" identifier="loginSegue" id="Fp8-7C-rg8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

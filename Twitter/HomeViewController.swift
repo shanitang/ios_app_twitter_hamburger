@@ -50,12 +50,7 @@ class HomeViewController: UIViewController{
         
         // Do any additional setup after loading the view.
     }
-    
-    override func viewWillAppear(animated: Bool) {
-//        viewDidLoad()
 
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
